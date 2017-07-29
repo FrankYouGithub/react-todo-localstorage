@@ -18,16 +18,16 @@ class App extends Component {
   render() {
     let todos = this.state.todoList.filter((item)=> !item.deleted).map((item,index)=>{
       return (
-        <li key={index}>
+        <li key={index} className={item.status}>
           <TodoItem todo={item} onToggle={this.toggle.bind(this)} onDelete={this.delete.bind(this)}/>
         </li>
       )
     })
-    console.log(todos)
     return (
       <div className="App">
-        <h1>我的待办</h1>
+        <h1>todos</h1>
         <div className="inputWrapper">
+          <span>❯</span>
           <TodoInput content={this.state.newTodo} onChange={this.changeTitle.bind(this)} onSubmit={this.addTodo.bind(this)}/>
         </div>
         <ol className="todoList">
